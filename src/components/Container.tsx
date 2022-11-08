@@ -15,7 +15,7 @@ export default function () {
     let mousedownId = useRef<any>();
     let isMounted = useRef<boolean>(true);
 
-    const { width, height, loop, currentIndex, isPaused, keyboardNavigation, preventDefault, storyContainerStyles = {} } = useContext<GlobalCtx>(GlobalContext);
+    const { width, height, loop, currentIndex, isPaused, preventDefault, storyContainerStyles = {} } = useContext<GlobalCtx>(GlobalContext);
     const { stories } = useContext<StoriesContextInterface>(StoriesContext);
 
     useEffect(() => {
@@ -33,32 +33,6 @@ export default function () {
             setPause(isPaused)
         }
     }, [isPaused])
-
-    useEffect(() => {
-        const isClient = (typeof window !== 'undefined' && window.document);
-        if (isClient && (typeof keyboardNavigation === 'boolean' && keyboardNavigation)) {
-            document.addEventListener("keydown", handleKeyDown);
-            return () => {
-                document.removeEventListener("keydown", handleKeyDown);
-            }
-        }
-    }, [keyboardNavigation]);
-
-    // Cleanup mounted state - for issue #130 (https://github.com/mohitk05/react-insta-stories/issues/130)
-    useEffect(() => {
-        return () => {
-            isMounted.current = false;
-        }
-    }, []);
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'ArrowLeft') {
-            previous()
-        }
-        else if (e.key === 'ArrowRight') {
-            next()
-        }
-    }
 
     const toggleState = (action: string, bufferAction?: boolean) => {
         setPause(action === 'pause')

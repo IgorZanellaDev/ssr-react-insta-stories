@@ -19,7 +19,6 @@ export interface ReactInstaStoriesProps {
     onAllStoriesEnd?: Function;
     onStoryStart?: Function;
     onStoryEnd?: Function;
-    keyboardNavigation?: boolean;
     preventDefault?: boolean;
 }
 
@@ -41,7 +40,6 @@ export interface GlobalCtx {
     onAllStoriesEnd?: Function;
     onStoryStart?: Function;
     onStoryEnd?: Function;
-    keyboardNavigation?: boolean;
     preventDefault?: boolean;
 }
 
