@@ -10,6 +10,9 @@ Why did I make this fork? When you go for SSR-only on Gatsby, Next, etc. you can
 ## ❌ No keyboardNavigation
 To make it work on SSR I removed `document` and `window` references, so I removed `keyboardNavigation` prop which used JavaScript `document` for event listeners on keyboard. 
 
+## 🌍 Different WebPack style-loader
+To make it work on SSR I change WebPack `style-loader` with `isomorphic-style-loader`, which is the style-loader to use if you use a component for SSR.
+
 ## ⚙️ Install
 
 ```bash
